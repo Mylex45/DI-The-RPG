@@ -19,7 +19,7 @@ CFLAGS = -g -I$(INCLUDE)
 EXEC = di_rpg
 
 $(EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $(EXEC) 
+	$(CC) $(OBJS) $(CFLAGS) -o $(EXEC) 
   
 run: $(EXEC)
   ./$(EXEC)
