@@ -76,6 +76,7 @@ int main(void) {
   Grid world(20, 20, items, spells);
   world.display();
 
+  // At this point, the player has full control of the game and can do any actions are available
 
   string command, direction;
   int selection, number;
