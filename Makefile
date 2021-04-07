@@ -1,17 +1,25 @@
 # Compiler
 
-$(CC) = g++
+CC = g++
+
+# Include path
+
+INCLUDE = include
 
 # Object files
 
-$(OBJ) = programs/game.o modules/Classes.o
+OBJ = programs/game.o modules/Classes.o 
+
+# Compilation flags
+
+CFLAGS = -g -I$(INCLUDE) 
 
 # Executable file
 
-$(EXEC) = di_rpg
+EXEC = di_rpg
 
-$(EXEC): $(OBJ)
-  $(CC) -o $(EXEC) $(OBJ)
+$(EXEC): $(OBJS)
+	$(CC) $(OBJS) -o $(EXEC) 
   
 run: $(EXEC)
   ./$(EXEC)
