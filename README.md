@@ -1,6 +1,6 @@
 Το πρόγραμμα μεταγλωττίζεται και εκτελείται με τις εξής εντολές:
 
--> g++ game.cpp Classes.cpp
+-> g++ programs/game.cpp modules/Classes.cpp
 
 -> ./a.out
 
