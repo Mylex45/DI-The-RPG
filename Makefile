@@ -28,4 +28,5 @@ valgrind: $(EXEC)
   valgrind ./$(EXEC)
   
 clean:
-  rm -f $(OBJ)
+  rm -f $(OBJ) $(EXEC)
+  clear
