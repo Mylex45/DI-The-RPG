@@ -421,6 +421,11 @@ Grid::~Grid() {
 
 ////////////////////// Move function ////////////////////////////
 
+// Moves team in given direction
+// If team moves to a common square
+// There's a chance to encounter monsters with stats
+// based on team's stats
+
 void Grid::move(Hero** team, const int n, string direction) {
   if(direction == "up") {
     if(x == 1) {
@@ -490,6 +495,9 @@ void Grid::move(Hero** team, const int n, string direction) {
     }
   }
 }
+
+// A typical shop function with a global item pool
+// (every market has the same items)
 
 void Grid::shop(Hero** team, const int n) {
   if(Market* square = dynamic_cast<Market*>(map[x][y])) {
@@ -578,6 +586,8 @@ void LightingSpell::special_effect(Monster* m) const {
 
 ////////////////////// Hero functions /////////////////////////////
 
+// Function for potion usage
+
 void Hero::use(const int i) {
   if(Potion* p = dynamic_cast<Potion*>(inventory.at(i))) {
     if(p->get_type() == 0) {
@@ -597,6 +607,8 @@ void Hero::use(const int i) {
   }
 
 }
+
+// Function for using equipment
 
 void Hero::equip(const int i) {
   Item* item = inventory.at(i);
@@ -666,6 +678,8 @@ void Hero::sell_spell(const int index) {
   }
 }
 
+// Prints hero's inventory
+
 void Hero::checkInventory() const {
   if(inventory.size() == 0) {
     cout << name << "'s inventory is empty" << endl;
@@ -680,6 +694,8 @@ void Hero::checkInventory() const {
   }
 }
 
+// Prints Hero's spellbook
+
 void Hero::checkSpellbook() const {
   if(spellbook.size() == 0){
     cout << name << "'s spellbook is empty" << endl;
@@ -693,6 +709,8 @@ void Hero::checkSpellbook() const {
     }
   }
 }
+
+// Returns spell in given position i of spellbook
 
 Spell* Hero::spell(const int i) {
   if(i < spellbook.size()) {
@@ -748,6 +766,8 @@ void Debuff::update_for_round() {
 void Monster::add_debuff(Debuff* d) {
   debuffs.push_back(d);
 }
+
+// Debuff recovery function
 
 void Monster::recover(const int stats, string type) {
   if(type == "dmg_r") {
@@ -835,6 +855,8 @@ void Hero::castSpell(Spell* s, Monster* m) {
 }
 
 ///////////////////// Battle function /////////////////////////
+
+// Function for the battle concept
 
 void Common::battle(Hero** team, const int n, Monster** monsters, const int m) {
   while(!are_dead((Living**)team, n) && !are_dead((Living**)monsters, m)) {
